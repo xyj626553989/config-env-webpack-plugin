@@ -8,11 +8,14 @@ class ConfigEnvWebpackPlugin {
     compiler.hooks.run.tap("ConfigEnvWebpackPlugin", runCallback);
   }
 }
-const readFile = (compiler, path) => {
+const readFile = (compiler, path, notDefault) => {
   if (fs.existsSync(path)) {
     return compiler.inputFileSystem.readFileSync(path, {
       encoding: "utf-8"
     });
+  }
+  if (notDefault) {
+    throw new Error(`The ${path} file could not be found, you should create it in the same directory as package.json`);
   }
 };
 
@@ -34,7 +37,7 @@ const runCallback = (compiler) => {
   const defaultPath = resolve(process.cwd(), `.env`);
   const path = resolve(process.cwd(), `.env.${CONFIG_ENV}`);
   const defaultContent = readFile(compiler, defaultPath);
-  const content = readFile(compiler, path);
+  const content = readFile(compiler, path, true);
   const params = formatParams(content);
   const defaultParams = formatParams(defaultContent);
   new DefinePlugin({
