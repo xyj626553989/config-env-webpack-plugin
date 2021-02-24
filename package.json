@@ -1,14 +1,22 @@
 {
   "name": "config-env-webpack-plugin",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a webpack-plugin that sets mapped environment variables",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "env",
+    "webpack",
+    "webpack-plugin"
+  ],
+  "license": "MIT",
+  "author": "xiongyongjiang",
   "dependencies": {
     "qs": "^6.9.6"
   },
@@ -25,8 +33,8 @@
   },
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -40,5 +48,10 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "homepage": "https://github.com/xyj626553989/config-env-webpack-plugin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xyj626553989/config-env-webpack-plugin"
   }
 }

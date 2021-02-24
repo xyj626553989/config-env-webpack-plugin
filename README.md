@@ -7,7 +7,7 @@ Set different environment variables for different environments
 To begin, you'll need to install config-env-Webpack-plugin:
 
 ```js
-$ npm install config-env-Webpack-plugin --save-dev
+$ npm install config-env-webpack-plugin --save-dev
 ```
 
 Then add the plugin to your webpack config. For example:
