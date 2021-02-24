@@ -25,7 +25,8 @@ Then add the plugin to your webpack config. For example:
 
 **package.json**
 Set the environment variable under package.json. For example:
-Plugin reads the Node ENV environment by default
+Plugin reads the Node_ENV environment by default
+CONFIG_ENV= XXX and the file is named.env.xxx
 
 ```json
 {
@@ -38,11 +39,22 @@ Plugin reads the Node ENV environment by default
 ```
 
 **project directory**
+The .env file defines a common environment variable that will be read by all hit CONFIG_ENVs
 
-- .env.development, .env.test, .env.production：Set a variable。
+|-- project
+|-- .env content: COMMON_URL=www.default.com
+|-- .env.development content: HTTP_URL=www.development.com
+|-- .env.production content: HTTP_URL=www.production.com
+|-- .env.test content: HTTP_URL=www.test.com
+|-- package.json
+|-- public
+| |-- index.html
+|-- src
+|-- index.js
 
-.env.development, .env.test, .env.production file content:
+**use in your project**
 
-- DOMAIN=www.example.com
-- REACT_APP_FOO=DOMAIN/foo
-- REACT_APP_BAR=DOMAIN/bar
+```js
+const httpUrl = process.env.HTTP_URL;
+const commonUrl = process.env.COMMON_URL;
+```

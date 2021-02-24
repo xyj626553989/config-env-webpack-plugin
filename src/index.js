@@ -8,19 +8,18 @@ class ConfigEnvWebpackPlugin {
     compiler.hooks.run.tap("ConfigEnvWebpackPlugin", runCallback);
   }
 }
-const runCallback = (compiler) => {
-  const CONFIG_ENV = process.env.CONFIG_ENV || process.env.NODE_ENV;
-  const path = resolve(process.cwd(), `.env.${CONFIG_ENV}`);
-  let isFind = fs.existsSync(path);
-  if (!isFind) {
-    throw new Error(`The ${path} file could not be found, you should create it in the same directory as package.json`);
+const readFile = (compiler, path) => {
+  if (fs.existsSync(path)) {
+    return compiler.inputFileSystem.readFileSync(path, {
+      encoding: "utf-8"
+    });
   }
-  const content = compiler.inputFileSystem.readFileSync(path, {
-    encoding: "utf-8"
-  });
+};
 
+const formatParams = (content) => {
+  if (!content) return {};
   let splitParams = content.split("\r\n");
-  const params = splitParams
+  return splitParams
     .filter((item) => item)
     .map((item) => qs.parse(item))
     .reduce((memo, next) => {
@@ -29,8 +28,18 @@ const runCallback = (compiler) => {
       });
       return memo;
     }, {});
+};
+const runCallback = (compiler) => {
+  const CONFIG_ENV = process.env.CONFIG_ENV || process.env.NODE_ENV;
+  const defaultPath = resolve(process.cwd(), `.env`);
+  const path = resolve(process.cwd(), `.env.${CONFIG_ENV}`);
+  const defaultContent = readFile(compiler, defaultPath);
+  const content = readFile(compiler, path);
+  const params = formatParams(content);
+  const defaultParams = formatParams(defaultContent);
   new DefinePlugin({
     "process.env": {
+      ...defaultParams,
       ...params,
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }

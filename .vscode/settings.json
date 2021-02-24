@@ -1,11 +1,11 @@
 {
-      // 设置全部语言的默认格式化程序为prettier
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.codeActionsOnSave": {
-        "source.fixAll.eslint": true
-    },
-    // #每次保存的时候自动格式化
-  "editor.formatOnSave": true,
+  // 设置全部语言的默认格式化程序为prettier
+  // "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  // #每次保存的时候自动格式化
+  "editor.formatOnSave": true
   // #每次保存的时候将代码按eslint格式进行修复
-//   "eslint.autoFixOnSave": true,
+  //   "eslint.autoFixOnSave": true,
 }
