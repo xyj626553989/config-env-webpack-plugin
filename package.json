@@ -13,6 +13,9 @@
     "qs": "^6.9.6"
   },
   "devDependencies": {
+    "@commitlint/cli": "^12.0.0",
+    "@commitlint/config-conventional": "^12.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^7.20.0",
     "eslint-config-prettier": "^8.0.0",
     "husky": "^5.1.1",
@@ -22,6 +25,7 @@
   },
   "husky": {
     "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
   },
@@ -31,5 +35,10 @@
       "eslint --cache --fix",
       "git add"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
