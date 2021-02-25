@@ -23,7 +23,8 @@ class ConfigEnvWebpackPlugin {
     new DefinePlugin({
       "process.env": {
         ...params,
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
+        BABEL_ENV: JSON.stringify(process.env.BABEL_ENV)
       }
     }).apply(compiler);
     cb();
