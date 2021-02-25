@@ -44,15 +44,15 @@ CONFIG_ENV= XXX and the file is named.env.xxx
 The .env file defines a common environment variable that will be read by all hit CONFIG_ENVs
 
 - |-- project
-- |-- .env ----------------------------- content: COMMON_URL=www.default.com
-- |-- .env.development ------------------content: HTTP_URL=www.development.com
-- |-- .env.production -------------------content: HTTP_URL=www.production.com
-- |-- .env.test content: ----------------HTTP_URL=www.test.com
-- |-- package.json
-- |-- public
-  - | |-- index.html
-- |-- src
-  - |-- index.js
+  - |-- .env -----------------------------content: COMMON_URL=www.default.com
+  - |-- .env.development -----------------content: HTTP_URL=www.development.com
+  - |-- .env.production ------------------content: HTTP_URL=www.production.com
+  - |-- .env.test ------------------------content: HTTP_URL=www.test.com
+  - |-- package.json
+  - |-- public
+    - | |-- index.html
+  - |-- src
+    - | |-- index.js
 
 **use in your project**
 

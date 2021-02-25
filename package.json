@@ -2,12 +2,12 @@
   "name": "config-env-webpack-plugin",
   "version": "1.0.4",
   "description": "This is a webpack-plugin that sets mapped environment variables",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "babel src --out-dir dist"
   },
   "files": [
-    "src",
+    "dist",
     "README.md"
   ],
   "keywords": [
@@ -21,6 +21,9 @@
     "qs": "^6.9.6"
   },
   "devDependencies": {
+    "@babel/cli": "^7.13.0",
+    "@babel/core": "^7.13.1",
+    "@babel/preset-env": "^7.13.5",
     "@commitlint/cli": "^12.0.0",
     "@commitlint/config-conventional": "^12.0.0",
     "cz-conventional-changelog": "^3.3.0",

@@ -1,0 +1,20 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build:test": "cross-env  CONFIG_ENV=test  NODE_ENV=production  webpack",
+    "build:xxx": "cross-env  CONFIG_ENV=xxx  NODE_ENV=production  webpack",
+    "build:prod": "cross-env  NODE_ENV=production  webpack",
+    "build:dev": "cross-env   NODE_ENV=development  webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "webpack": "^5.24.2",
+    "webpack-cli": "^4.5.0"
+  }
+}
