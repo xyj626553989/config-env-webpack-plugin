@@ -10,7 +10,7 @@ class ConfigEnvWebpackPlugin {
   apply(compiler) {
     this._runCallback(compiler);
   }
-  async _runCallback(compiler) {
+  _runCallback(compiler) {
     const CONFIG_ENV = process.env.CONFIG_ENV || process.env.NODE_ENV || compiler.options.mode;
     let defaultPath = getPath(this.prefix, compiler);
     let filePath = getPath(`${this.prefix}.${CONFIG_ENV}`, compiler);
