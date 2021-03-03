@@ -26,28 +26,29 @@ Then add the plugin to your webpack config. For example:
 ## **package.json**
 
 Set the environment variable under package.json. For example:
-Plugin reads the Node_ENV environment by default
-CONFIG_ENV= XXX and the file is named.env.xxx
+CONFIG_ENV = XXX and the file is named .env.xxx
 
 ```json
 {
   "scripts": {
-    "build:test": "cross-env  CONFIG_ENV=test  NODE_ENV=production  webpack ", //测试环境
-    "build:prod": "cross-env  CONFIG_ENV=prod  NODE_ENV=production  webpack ", //生产环境
-    "start": "cross-env NODE_ENV=development  webpack serve" //本地开发环境
+    "build:test": "cross-env  CONFIG_ENV=test  NODE_ENV=production  webpack ",
+    "build:prod": "cross-env  CONFIG_ENV=prod  NODE_ENV=production  webpack ",
+    "build:xxx": "cross-env  CONFIG_ENV=xxx  NODE_ENV=production  webpack ",
+    "start": "cross-env NODE_ENV=development  webpack serve"
   }
 }
 ```
 
 ## **project directory**
 
-The .env file defines a common environment variable that will be read by all hit CONFIG_ENVs
+You can set the public environment variable in the .env file because it will be read every time.
 
 - |-- project
   - |-- .env -----------------------------content: COMMON_URL=www.default.com
   - |-- .env.development -----------------content: HTTP_URL=www.development.com
   - |-- .env.production ------------------content: HTTP_URL=www.production.com
   - |-- .env.test ------------------------content: HTTP_URL=www.test.com
+  - |-- .env.xxx -------------------------content: HTTP_URL=www.xxx.com
   - |-- package.json
   - |-- public
     - | |-- index.html
@@ -59,4 +60,6 @@ The .env file defines a common environment variable that will be read by all hit
 ```js
 const httpUrl = process.env.HTTP_URL;
 const commonUrl = process.env.COMMON_URL;
+console.log(httpUrl);
+console.log(commonUrl);
 ```
