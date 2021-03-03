@@ -52,7 +52,7 @@ const getParams = (results) => {
   results
     .filter((item) => item)
     .forEach((content) => {
-      let splitParams = content.split("\r\n");
+      let splitParams = content.split(/[(\r\n)\r\n]+/);
       splitParams
         .filter((item) => item)
         .map((item) => qs.parse(item))
