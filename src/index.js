@@ -58,7 +58,7 @@ const getParams = (results) => {
         .map((item) => qs.parse(item))
         .reduce((memo, next) => {
           Object.keys(next).forEach((key) => {
-            memo[key.trim()] = next[key] ? JSON.stringify(next[key].trim()) : "true";
+            memo[key.trim()] = next[key] ? JSON.stringify(next[key].trim()) :  JSON.stringify("");
           });
           return memo;
         }, obj);
